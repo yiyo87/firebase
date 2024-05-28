@@ -9,7 +9,7 @@ const registrar = ()=>{
     let eNombre = document.getElementById("nombre");
     let eApellido = document.getElementById("apellido");
     let eEdad = document.getElementById("edad")
-    //recuper0 el valor del elemento
+    //recupero el valor del elemento
     let vNombre = eNombre.value;
     let vApellido = eApellido.value;
     let vEdad = eEdad.value;
