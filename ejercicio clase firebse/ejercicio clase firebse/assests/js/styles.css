@@ -1,0 +1,25 @@
+
+#seccionFormulario{
+    background-color: rgb(208, 221, 237);
+    width: 50%;
+    text-align: center;
+}
+
+
+#nombre{
+    width: 50%;
+    margin:10px;
+}
+#apellido{
+    width: 50%;
+    margin: 10px;
+}
+#edad{
+    width: 50%;
+    margin: 10px;
+}
+
+#btnRegistrar{
+    width: 50%;
+    margin: 10px;
+}
