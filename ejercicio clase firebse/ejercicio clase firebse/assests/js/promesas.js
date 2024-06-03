@@ -3,7 +3,7 @@ import {addDoc,collection,getDocs} from "https://www.gstatic.com/firebasejs/10.1
 
 
 export const registrarPersona = async(persona)=>{//esto es como el DAO sirve para poder meter cosasa dentro de la base de datos 
-    const docRef = await addDoc(collection(db, "persona"),persona );
+    const docRef = await addDoc(collection(db, "personas"),persona );
 }
 
 export const obtenerPersonas = async()=>{

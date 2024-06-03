@@ -1,5 +1,8 @@
-import {registrarPersona,obtenerPersonas} from "./promesas.js"
+import {registrarPersona,obtenerPersonas} from "./promesas.js";
 window.addEventListener("load", ()=>{//espera que la pagina cargue
+    document.getElementById("btnRegistrar").addEventListener("click",function(event){
+        event.preventDefault();
+    }); 
     document.getElementById("btnRegistrar").addEventListener("click",registrar);
     cargarDatos();
 })
@@ -14,14 +17,14 @@ const registrar = ()=>{
     let vApellido = eApellido.value;
     let vEdad = eEdad.value;
      //creo un objeto en base al elemento con los datos recuperados
-    let objeto = {nombre:vNombre,apellido:vApellido,edad:vEdad}//{apellido:vApellido},{edad:vEdad},tengo que agregar eso mas dentro de mi archivohtml
+    let objeto = {nombre:vNombre,apellido:vApellido,edad:vEdad};//{apellido:vApellido},{edad:vEdad},tengo que agregar eso mas dentro de mi archivohtml
 
     // envio a una funcion que registre
-    //console.log(objeto);
+    console.log(objeto);
 
     registrarPersona(objeto).then(()=>{//el then funciona como un activador si se cumple la funcion cuando la promesa se cumple o se ejecuta
-        alert ("se registra con exito");
-        cargarDatos()
+        alert("se registra con exito");
+        cargarDatos();
     }).catch((error)=>{// es un activador cuando la promesa no se activa sale un error o mensaje de error 
         console.log(error);
     });
@@ -42,16 +45,17 @@ const cargarDatos = ()=>{
             estructura += "<td>" +p.edad+"</td>"
             estructura += "<td><button id='UPD"+p.id+"'>actualizar</button></td>"
             estructura += "<td><button id='DEL"+p.id+"'>eliminar</button></td>"
-            estructura +="</td>";
+            estructura +="</tr>";
             
-        });document.getElementById("cuerpoTabla").innerHTML=estructura;
+        })
+        document.getElementById("cuerpoTabla").innerHTML=estructura;
         personas.forEach((p)=>{
             let elemento = document.getElementById("UPD"+p.id);
             elemento.addEventListener("click",()=>{
                 document.getElementById("UPDnombre").value = p.nombre;
-                document.getElementById("UPapellido").value = p.apellido;
+                document.getElementById("UPDapellido").value = p.apellido;
                 document.getElementById("UPDedad").value = p.edad;
-                document.getElementById("btnActualizar").value = p.id;
+                document.getElementById("btnActualizar").value = p.id
             })
         })
     })

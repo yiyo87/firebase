@@ -6,35 +6,32 @@
     <title>Document</title>
     <script type="module" src="./assests/js/firebase.js"></script>
     <script type="module" src="./assests/js/script.js"></script>
-    <link rel="stylesheet" href="./assests/js/styles.css">
+    <link rel="stylesheet" href="assests/js/styles.css">
 </head>
 <body>
-    <section id="seccionFormulario">
-        <article id="articuloFormulario">
-        <form action="" id="formulario">
-            <input type="text" id="nombre" placeholder="nombre">
-            <input type="text" id="apellido" placeholder="apellido">
-            <input type="text" id="edad" placeholder="edad">
-            <button id="btnRegistrar">Registrar</button>
-        </form>
-        </article>
-        <table id="cuerpoTabla">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Edad</th>
-                </tr>
-            </thead>
-            <tbody id="cuerpoTabla">
+    <form action="">
+        <input type="text" id="nombre" placeholder="nombre">
+        <input type="text" id="apellido" placeholder="apellido">
+        <input type="text" id="edad" placeholder="edad">
+        <button id="btnRegistrar">Registrar</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Edad</th>
+            </tr>
+        </thead>
+        <tbody id="cuerpoTabla">
 
-            </tbody>
+        </tbody>
         </table>
         <h1>Actualizar</h1>
-        <input type="text" id="UPDnombre" placeholder="nombre">
+            <input type="text" id="UPDnombre" placeholder="nombre">
             <input type="text" id="UPDapellido" placeholder="apellido">
             <input type="text" id="UPDedad" placeholder="edad">
             <button id="btnActualizar">Actualizar</button>
-    </section>
+
 </body>
 </html>
