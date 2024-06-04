@@ -1,10 +1,11 @@
-import {registrarPersona,obtenerPersonas} from "./promesas.js";
+import {registrarPersona,obtenerPersonas, actualizarPersona, eliminarPersona} from "./promesas.js";
 window.addEventListener("load", ()=>{//espera que la pagina cargue
     document.getElementById("btnRegistrar").addEventListener("click",function(event){
         event.preventDefault();
     }); 
     document.getElementById("btnRegistrar").addEventListener("click",registrar);
     cargarDatos();
+    document.getElementById("btnActualizar").addEventListener("click",actualizar);
 })
 
 const registrar = ()=>{
@@ -56,7 +57,48 @@ const cargarDatos = ()=>{
                 document.getElementById("UPDapellido").value = p.apellido;
                 document.getElementById("UPDedad").value = p.edad;
                 document.getElementById("btnActualizar").value = p.id
+            });
+            let btnEliminar = document.getElementById("DEL"+p.id);
+            btnEliminar.addEventListener("click",()=>{
+                if(confirm("desea eliminar a:\n"+p.nombre+""+p.apellido)){
+                    console.log("vamos a eliminar")
+                    eliminarPersona(p.id).then (()=>{
+                        alert ("eliminaste con exito")
+                        cargarDatos();
+                    }).catch((e)=>{
+                        console.log(e);
+                    })
+
+                }else{
+                    console.log("cancelaste la eliminacion")
+                }
             })
         })
+    })
+}
+document.getElementById
+const actualizar= ()=>{
+   //recuperar campos del formulario
+    //recupero elemento
+    let eNombre = document.getElementById("UPDnombre");
+    let eApellido = document.getElementById("UPDapellido");
+    let eEdad = document.getElementById("UPDedad")
+    //recupero el valor del elemento
+    let vNombre = eNombre.value;
+    let vApellido = eApellido.value;
+    let vEdad = eEdad.value;
+     //creo un objeto en base al elemento con los datos recuperados
+    let objeto = {nombre:vNombre,apellido:vApellido,edad:vEdad};
+   //creo un objeto
+    console.log(objeto)
+    let id = document.getElementById("btnActualizar").value;
+   //envio el objeto y el id a las promesas
+    document.getElementById("btnActualizar").disabled= "True";
+    actualizarPersona(objeto,id).then(()=>{
+    alert ("se actualiza con exito")
+    cargarDatos()
+    document.getElementById("btnActualizar").disabled= "";
+    }).catch((e)=>{
+    console.log(e);
     })
 }
