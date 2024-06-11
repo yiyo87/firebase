@@ -2,7 +2,6 @@ body{
     background-color:aliceblue;
 }
 
-
 #seccionFormulario{
 
     background-color: rgb(208, 221, 237);
@@ -20,6 +19,11 @@ body{
     margin: 10px;
 }
 #edad{
+    width: 50%;
+    margin: 10px;
+}
+
+#opciones{
     width: 50%;
     margin: 10px;
 }

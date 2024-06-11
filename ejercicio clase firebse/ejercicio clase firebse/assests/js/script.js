@@ -3,8 +3,8 @@ window.addEventListener("load", ()=>{//espera que la pagina cargue
     document.getElementById("btnRegistrar").addEventListener("click",function(event){
         event.preventDefault();
     }); 
-    document.getElementById("btnContraste").addEventListener("click",cambiarContraste);
-    document.getElementById("btnFuente").addEventListener("click",cambiarFuenteTamano);//debo completar con la funcion que corresponde para cada id 
+    //document.getElementById("btnContraste").addEventListener("click",cambiarContraste);
+    //document.getElementById("btnFuente").addEventListener("click",cambiarFuenteTamano);//debo completar con la funcion que corresponde para cada id 
     document.getElementById("btnRegistrar").addEventListener("click",registrar);
     cargarDatos();
     document.getElementById("btnActualizar").addEventListener("click",actualizar);
@@ -15,12 +15,14 @@ const registrar = ()=>{
     let eNombre = document.getElementById("nombre");
     let eApellido = document.getElementById("apellido");
     let eEdad = document.getElementById("edad")
+    let eOpcion = document.getElementById("opcion");
     //recupero el valor del elemento
     let vNombre = eNombre.value;
     let vApellido = eApellido.value;
     let vEdad = eEdad.value;
+    let vOpcion = eOpcion.value;
      //creo un objeto en base al elemento con los datos recuperados
-    let objeto = {nombre:vNombre,apellido:vApellido,edad:vEdad};//{apellido:vApellido},{edad:vEdad},tengo que agregar eso mas dentro de mi archivohtml
+    let objeto = {nombre:vNombre,apellido:vApellido,edad:vEdad,opcion:vOpcion};//{apellido:vApellido},{edad:vEdad},tengo que agregar eso mas dentro de mi archivohtml
 
     // envio a una funcion que registre
     console.log(objeto);
@@ -46,6 +48,7 @@ const cargarDatos = ()=>{
             estructura += "<td>" +p.nombre+"</td>"
             estructura += "<td>" +p.apellido+"</td>"
             estructura += "<td>" +p.edad+"</td>"
+            estructura += "<td>" +p.opcion+"</td>"
             estructura += "<td><button id='UPD"+p.id+"'>actualizar</button></td>"
             estructura += "<td><button id='DEL"+p.id+"'>eliminar</button></td>"
             estructura +="</tr>";
@@ -58,11 +61,12 @@ const cargarDatos = ()=>{
                 document.getElementById("UPDnombre").value = p.nombre;
                 document.getElementById("UPDapellido").value = p.apellido;
                 document.getElementById("UPDedad").value = p.edad;
+                document.getElementById("UPDopcion").value = p.opcion;
                 document.getElementById("btnActualizar").value = p.id
             });
             let btnEliminar = document.getElementById("DEL"+p.id);
             btnEliminar.addEventListener("click",()=>{
-                if(confirm("desea eliminar a:\n"+p.nombre+""+p.apellido)){
+                if(confirm("desea eliminar a:\n"+p.nombre+""+p.apellido)){//aqui va a eliminar al usuario con el nombre y apellido y lo muestra con un alert 
                     console.log("vamos a eliminar")
                     eliminarPersona(p.id).then (()=>{
                         alert ("eliminaste con exito")
@@ -85,12 +89,13 @@ const actualizar= ()=>{
     let eNombre = document.getElementById("UPDnombre");
     let eApellido = document.getElementById("UPDapellido");
     let eEdad = document.getElementById("UPDedad")
-    //recupero el valor del elemento
+    let eOpcion = document.getElementById("UPDopcion");    //recupero el valor del elemento
     let vNombre = eNombre.value;
     let vApellido = eApellido.value;
     let vEdad = eEdad.value;
+    let vOpcion = eOpcion.value;
      //creo un objeto en base al elemento con los datos recuperados
-    let objeto = {nombre:vNombre,apellido:vApellido,edad:vEdad};
+    let objeto = {nombre:vNombre,apellido:vApellido,edad:vEdad,opcion:vOpcion};
    //creo un objeto
     console.log(objeto)
     let id = document.getElementById("btnActualizar").value;
@@ -117,10 +122,10 @@ function cambiarContraste(){
     
     //console.log(fondo);
     if(fondo == "black"){
-        eBody.style.backgroundColor = "purple";
+        eBody.style.backgroundColor = "aliceblue";
         for (let index = 0; index < eH1.length; index++) {
             const element = eH1[index];
-            element.style.color = "purple";
+            element.style.color = "aliceblue";
         }
 
         for (let index = 0; index < inputs.length; index++) {
