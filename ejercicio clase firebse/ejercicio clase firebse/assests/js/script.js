@@ -15,14 +15,14 @@ const registrar = ()=>{
     let eNombre = document.getElementById("nombre");
     let eApellido = document.getElementById("apellido");
     let eEdad = document.getElementById("edad")
-    let eOpcion = document.getElementById("opcion");
+    //let eOpcion = document.getElementById("opcion");
     //recupero el valor del elemento
     let vNombre = eNombre.value;
     let vApellido = eApellido.value;
     let vEdad = eEdad.value;
-    let vOpcion = eOpcion.value;
+    //let vOpcion = eOpcion.value;
      //creo un objeto en base al elemento con los datos recuperados
-    let objeto = {nombre:vNombre,apellido:vApellido,edad:vEdad,opcion:vOpcion};//{apellido:vApellido},{edad:vEdad},tengo que agregar eso mas dentro de mi archivohtml
+    let objeto = {nombre:vNombre,apellido:vApellido,edad:vEdad};//{apellido:vApellido},{edad:vEdad},tengo que agregar eso mas dentro de mi archivohtml
 
     // envio a una funcion que registre
     console.log(objeto);
@@ -108,6 +108,14 @@ const actualizar= ()=>{
     }).catch((e)=>{
     console.log(e);
     })
+}
+
+function validar(){
+    validarVacio("nombre");
+    validarVacio("email");
+    validarVacio("asunto");
+    validarVacio("mensaje");
+    validarLongitud("telefono");
 }
 
 function cambiarContraste(){
